@@ -1,0 +1,57 @@
+﻿@model SignInModel
+@{
+    ViewBag.Title = "Sign in";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <!-- Uncomment the section below to use simple example sign-in against your own Weavy installation -->
+        @*@using (Html.BeginForm("SignIn", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @Html.AntiForgeryToken()
+            <h4>Simplified Sign In</h4>
+            <hr />
+            <div class="alert alert-primary" role="alert">
+                For this demo user authentication is greatly simplified. Simply enter a valid email and a name to sign in. You can create multiple accounts to simulate the chat experience.
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+            @Html.HiddenFor(m => m.Path)
+            <div class="form-group">
+                <input type="submit" value="Sign in" class="btn btn-default" />
+            </div>
+        }*@
+
+        <!-- The section below lets you sign in with any of four accounts against a demo installation of Weavy. You should remove this sections and use the section above if you are authenticating against your own Weavy instance -->
+        @using (Html.BeginForm("SignInDemo", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @Html.AntiForgeryToken()
+            <h4>Demo Sign In</h4>
+            <hr />
+            <div class="alert alert-primary" role="alert">
+                Authenticate using a test account against a remote Weavy demo installation. This is the quickest way to get this demo up and running.
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="Username">Demo user</label>
+                <select class="form-control" name="Username" id="Username">
+                    <option value="oliver">Oliver</option>
+                    <option value="lilly">Lilly</option>
+                    <option value="samara">Samara</option>
+                    <option value="adam">Adam</option>
+                </select>
+            </div>
+            @Html.HiddenFor(m => m.Path)
+            <div class="form-group">
+                <input type="submit" value="Sign in" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>

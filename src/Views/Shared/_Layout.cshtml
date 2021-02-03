@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - My Telerik MVC Application</title>
+    <link href="https://kendo.cdn.telerik.com/2021.1.119/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+    @* Update the script tag below to utilize your own Weavy instance - the default script loads the public Weavy showcase instance *@
+    <script src="@(ConfigurationManager.AppSettings["weavy-url"])/javascript/weavy.jquery.min.js"></script>
+    <script>
+        jQuery.noConflict();
+    </script>
+
+    <script src="https://kendo.cdn.telerik.com/2021.1.119/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2021.1.119/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2021.1.119/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2021.1.119/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <script src="@Url.Content("~/Scripts/chat.js")"></script>
+</head>
+<body class="k-content">
+    <nav class="navbar navbar-inverse navbar-fixed-top p-3">
+        <div class="container p-0 p-sm-3">
+            <div class="navbar-header">
+                <button id="configure" class="k-rpanel-toggle k-button btn-toggle"><span class="k-icon k-i-menu"></span></button>
+                @Html.ActionLink("Weavy + Telerik Chat Demo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            @if (User.Identity.IsAuthenticated) {
+                <div class="navbar-left text-muted">
+                    <span>Signed in as @(User.Identity.Name)</span>
+                </div>
+            }
+            <div id="responsive-panel" class="navbar-left">
+                @(Html.Kendo().Menu()
+                        .Name("Menu")
+                        .Items(items =>
+                        {
+                            if (User.Identity.IsAuthenticated) {
+                                items.Add().HtmlAttributes(new { id="badge" }).Text("Chat").Action("Chat", "Home", new { area = "" });
+                                items.Add().Text("Sign out").Action("SignOut", "Account", new { area = "" });
+                            } else {
+                                items.Add().Text("Sign in").Action("SignIn", "Account", new { area = "" });
+                            }
+                        })
+                    )
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="footer text-center d-flex align-items-center">
+        <div class="container pb-0">
+            <hr />
+            <p>&copy; Weavy @DateTime.Now.Year</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $("#responsive-panel").kendoResponsivePanel({
+                breakpoint: 768,
+                autoClose: false,
+                orientation: "top"
+            });
+        });
+        function onclick(e) {
+            $("#responsive-panel").getKendoResponsivePanel().toggle();
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

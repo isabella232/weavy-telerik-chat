@@ -1,0 +1,159 @@
+﻿
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 80px;
+}
+
+.k-menu .k-button {
+    transition: none;
+    border-radius: 0;
+    padding: 0;
+    background-color: unset;
+    border: 0;
+}
+
+/* #region Navbar styles */
+.navbar-header {
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+/* #endregion */
+
+
+/* #region Footer styles */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.85em;
+}
+/* #endregion */
+
+/* #region custom Kendo UI styles */
+#configure {
+    display: none;
+}
+
+.k-panelbar .k-content {
+    padding: 20px;
+}
+
+p .k-button {
+    margin: 0 15px 0 0;
+}
+
+.k-state-active .label {
+    font-size: 1em;
+}
+
+/* #endregion */
+
+@media (max-width: 767px) {
+    #responsive-panel {
+        transition: all linear .2s;
+    }
+
+    #configure {
+        display: block;
+        float: right;
+    }
+
+    .k-rpanel {
+        width: 100%;
+    }
+
+    .k-rpanel-expanded {
+        margin-top: 1rem;
+    }
+
+    .navbar-header {
+        width: 100%;
+    }
+
+    .footer {
+        height: 60px;
+    }
+
+    .k-menu .k-item,
+    .k-menu .k-link {
+        width: 100%;
+    }
+
+    .k-menu .k-link {
+        box-sizing: border-box;
+    }
+}
+
+/*custom chat styling*/
+.k-chat {
+    max-width: unset;
+    height: 800px;
+}
+
+#listview-context-menu {
+    padding: 0;
+    margin-bottom: -1px;
+    min-height: 300px;
+}
+
+.conversation {
+    position: relative;
+    height: 62px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(128,128,128,.3);
+    cursor: pointer;
+}
+
+    .conversation img {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        margin: 10px;
+        border: 1px solid #000;
+        float: left;
+    }
+
+    .conversation h3 {
+        margin: 0;
+        padding: 15px 5px 1px 0;
+        overflow: hidden;
+        line-height: 1em;
+        font-size: 1.1em;
+        font-weight: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .conversation.unread h3 {
+        font-weight: bold;
+    }
+
+    .conversation p {
+        font-size: .9em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+.k-listview:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.k-card > img.k-card-image {
+    height: 134px;
+    display: block;
+}
+
+.quoteCard span {
+    display: block;
+    float: right;
+}
