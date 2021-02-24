@@ -7,7 +7,6 @@
     <div class="col-md-8">
         <!-- Uncomment the section below to use simple example sign-in against your own Weavy installation -->
         @*@using (Html.BeginForm("SignIn", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-            @Html.AntiForgeryToken()
             <h4>Simplified Sign In</h4>
             <hr />
             <div class="alert alert-primary" role="alert">
@@ -32,7 +31,6 @@
 
         <!-- The section below lets you sign in with any of four accounts against a demo installation of Weavy. You should remove this sections and use the section above if you are authenticating against your own Weavy instance -->
         @using (Html.BeginForm("SignInDemo", "Account", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-            @Html.AntiForgeryToken()
             <h4>Demo Sign In</h4>
             <hr />
             <div class="alert alert-primary" role="alert">
